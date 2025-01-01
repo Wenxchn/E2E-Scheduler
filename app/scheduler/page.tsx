@@ -11,7 +11,7 @@ import {
 import WeekPicker from '@/components/weekpicker/weekpicker'
 import ScheduleTestButton from '@/components/scheduleTestButton/schedule-test-button'
 
-export default async function Countries() {
+export default async function Scheduler() {
   const supabase = await createClient()
   const { data: testSuites } = await supabase.from('Test Suites').select()
 
