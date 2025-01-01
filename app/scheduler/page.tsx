@@ -7,6 +7,7 @@ import {
   List,
   Plus,
 } from 'lucide-react'
+import WeekPicker from '@/components/weekpicker/weekpicker'
 
 export default async function Countries() {
   const supabase = await createClient()
@@ -23,7 +24,7 @@ export default async function Countries() {
               Scheduled Suites
             </h2>
           </div>
-          <div className="h-[36px] flex justify-between">
+          <div className="h-[36px] flex justify-between mb-[16px]">
             <div className="flex w-[398px] h-[36px] gap-[4px]">
               <Button
                 className="pt-2 pr-3 pb-2 pl-3 text-[14px] rounded-[8px] h-[36px]"
@@ -46,6 +47,9 @@ export default async function Countries() {
                 <CalendarDays color="black" />
               </Button>
             </div>
+          </div>
+          <div>
+            <WeekPicker />
           </div>
         </div>
       </div>
