@@ -20,13 +20,30 @@ import {
 } from '@/components/ui/select'
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group'
 import { DialogClose } from '@radix-ui/react-dialog'
+import { createClient } from '@supabase/supabase-js'
+
+const supabaseUrl: string = process.env.NEXT_PUBLIC_SUPABASE_URL!
+const supabaseAnonKey: string = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
 
 const ScheduleTestButton = () => {
   const [selectedTestSuiteName, setSelectedTestSuiteName] = useState('')
   const [selectedStartDate, setSelectedStartDate] = useState(new Date())
   const [selectedDaysOfWeek, setSelectedDaysOfWeek] = useState(0)
 
-  const saveChanges = async () => {}
+  const saveChanges = async () => {
+    try {
+      const supabase = createClient(supabaseUrl, supabaseAnonKey)
+      const newRow = {
+        created_at: new Date().toUTCString(),
+        name: selectedTestSuiteName,
+        selected_days_of_week: selectedDaysOfWeek,
+        start_time: new Date().toUTCString(), // This line needs to be changed once the start time date picker is implemented
+      }
+      await supabase.from('Test Suites').insert(newRow)
+    } catch (error) {
+      console.error(error)
+    }
+  }
 
   const handleSelectTestSuiteNameChange = (value: string) => {
     setSelectedTestSuiteName(value)
@@ -156,6 +173,7 @@ const ScheduleTestButton = () => {
           <Button
             className="flex w-full h-[40px] py-2 px-3 gap-2"
             variant={'coreBlue'}
+            onClick={saveChanges}
           >
             Save Changes
           </Button>
