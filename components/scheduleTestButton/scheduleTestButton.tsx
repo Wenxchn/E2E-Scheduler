@@ -19,6 +19,7 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group'
+import { DialogClose } from '@radix-ui/react-dialog'
 
 const ScheduleTestButton = () => {
   return (
@@ -125,12 +126,14 @@ const ScheduleTestButton = () => {
           </div>
         </DialogHeader>
         <div className="flex w-full justify-between gap-4 px-5 py-4 border-t-[1px] border-warmGray-200 ">
-          <Button
-            className="flex w-full h-[40px] border-[1px] border-warmGray-200 py-2 px-3 gap-2"
-            variant={'destructiveRed'}
-          >
-            <CircleX /> Cancel Schedule
-          </Button>
+          <DialogClose asChild>
+            <Button
+              className="flex w-full h-[40px] border-[1px] border-warmGray-200 py-2 px-3 gap-2"
+              variant={'destructiveRed'}
+            >
+              <CircleX /> Cancel Schedule
+            </Button>
+          </DialogClose>
           <Button
             className="flex w-full h-[40px] py-2 px-3 gap-2"
             variant={'coreBlue'}
