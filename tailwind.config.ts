@@ -56,11 +56,15 @@ const config = {
           DEFAULT: '#F9F8F8',
           150: '#EDEBE9',
           200: '#DED9D6',
+          700: '#8D8A8A',
           1100: '#1B1919',
         },
         coreBlue: {
           DEFAULT: '#0435DD',
           hover: '#032fc6',
+        },
+        destructiveRed: {
+          DEFAULT: '#DC2626',
         },
       },
       borderRadius: {

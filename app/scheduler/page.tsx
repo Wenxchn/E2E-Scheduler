@@ -4,10 +4,12 @@ import {
   CalendarDays,
   ChevronLeft,
   ChevronRight,
+  CircleX,
   List,
   Plus,
 } from 'lucide-react'
 import WeekPicker from '@/components/weekpicker/weekpicker'
+import ScheduleTestButton from '@/components/scheduleTestButton/scheduleTestButton'
 
 export default async function Countries() {
   const supabase = await createClient()
@@ -26,13 +28,7 @@ export default async function Countries() {
           </div>
           <div className="h-[36px] flex justify-between mb-[16px]">
             <div className="flex w-[398px] h-[36px] gap-[4px]">
-              <Button
-                className="pt-2 pr-3 pb-2 pl-3 text-[14px] rounded-[8px] h-[36px]"
-                variant={'coreBlue'}
-              >
-                <Plus />
-                <p className="text-[14px] font-semibold">Schedule Test</p>
-              </Button>
+              <ScheduleTestButton />
               <Button className="bg-white text-black border-[1px] border-warmGray-200 hover:bg-warmGray-200 text-[14px] rounded-[8px] p-[10px] w-[240px] h-[36px] justify-between">
                 <ChevronLeft />
                 <p className="text-[16px]">Week of 10/09/24</p>
@@ -40,7 +36,7 @@ export default async function Countries() {
               </Button>
             </div>
             <div className="bg-warmGray-150 rounded-[8px]">
-              <Button className="bg-warmGray-150 w-[36px] h-[36px] hover:bg-warmGray pt-[8px] pr-[12px] pb-[8px] pl-[12px] rounded-[8px]">
+              <Button className="bg-warmGray-150 w-[36px] h-[36px] hover:bg-warmGray py-2 px-3 rounded-[8px]">
                 <List color="black" />
               </Button>
               <Button className="bg-white border-[1px] border-warmGray-200 hover:bg-warmGray w-[36px] h-[36px] pt-[8px] pr-[12px] pb-[8px] pl-[12px] gap-4 rounded-[8px]">
