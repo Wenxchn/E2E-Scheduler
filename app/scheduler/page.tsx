@@ -9,7 +9,7 @@ import {
   Plus,
 } from 'lucide-react'
 import WeekPicker from '@/components/weekpicker/weekpicker'
-import ScheduleTestButton from '@/components/scheduleTestButton/scheduleTestButton'
+import ScheduleTestButton from '@/components/scheduleTestButton/schedule-test-button'
 
 export default async function Countries() {
   const supabase = await createClient()
