@@ -29,11 +29,12 @@ export default async function Countries() {
                 className="pt-2 pr-3 pb-2 pl-3 text-[14px] rounded-[8px] h-[36px]"
                 variant={'coreBlue'}
               >
-                <Plus /> Schedule Test
+                <Plus />
+                <p className="text-[14px] font-semibold">Schedule Test</p>
               </Button>
               <Button className="bg-white text-black border-[1px] border-warmGray-200 hover:bg-warmGray-200 text-[14px] rounded-[8px] p-[10px] w-[240px] h-[36px] justify-between">
                 <ChevronLeft />
-                <p className="">Week of 10/09/24</p>
+                <p className="text-[16px]">Week of 10/09/24</p>
                 <ChevronRight />
               </Button>
             </div>
