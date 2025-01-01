@@ -21,6 +21,12 @@ import {
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group'
 import { DialogClose } from '@radix-ui/react-dialog'
 import { createClient } from '@supabase/supabase-js'
+import { Calendar as CalendarComponent } from '@/components/ui/calendar'
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from '@radix-ui/react-popover'
 
 const supabaseUrl: string = process.env.NEXT_PUBLIC_SUPABASE_URL!
 const supabaseAnonKey: string = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
@@ -37,7 +43,7 @@ const ScheduleTestButton = () => {
         created_at: new Date().toUTCString(),
         name: selectedTestSuiteName,
         selected_days_of_week: selectedDaysOfWeek,
-        start_time: new Date().toUTCString(), // This line needs to be changed once the start time date picker is implemented
+        start_time: selectedStartDate.toUTCString(),
       }
       await supabase.from('Test Suites').insert(newRow)
     } catch (error) {
@@ -91,13 +97,25 @@ const ScheduleTestButton = () => {
                 <h6 className="text-[14px] font-semibold leading-[14px]">
                   Start Date and Time
                 </h6>
-                <Button
-                  className="flex w-full justify-between text-warmGray-1100"
-                  variant={'time'}
-                >
-                  <h6>Please select...</h6>
-                  <Calendar />
-                </Button>
+                <Popover>
+                  <PopoverTrigger asChild>
+                    <Button
+                      className="flex w-full justify-between text-warmGray-1100"
+                      variant={'time'}
+                    >
+                      <h6>{`${selectedStartDate.toUTCString()}`}</h6>
+                      <Calendar />
+                    </Button>
+                  </PopoverTrigger>
+                  <PopoverContent className="bg-white p-4 rounded-[6px]">
+                    <CalendarComponent
+                      mode="single"
+                      selected={selectedStartDate}
+                      onSelect={(date) => date && setSelectedStartDate(date)}
+                      initialFocus
+                    />
+                  </PopoverContent>
+                </Popover>
               </div>
               <div className="flex justify-between gap-2">
                 <h6 className="text-[14px] font-semibold leading-[14px]">
