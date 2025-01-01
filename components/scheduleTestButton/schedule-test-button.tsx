@@ -22,6 +22,24 @@ import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group'
 import { DialogClose } from '@radix-ui/react-dialog'
 
 const ScheduleTestButton = () => {
+  const [selectedTestSuiteName, setSelectedTestSuiteName] = useState('')
+  const [selectedStartDate, setSelectedStartDate] = useState(new Date())
+  const [selectedDaysOfWeek, setSelectedDaysOfWeek] = useState(0)
+
+  const saveChanges = async () => {}
+
+  const handleSelectTestSuiteNameChange = (value: string) => {
+    setSelectedTestSuiteName(value)
+  }
+
+  const handleSelectDaysOfWeekChange = (value: string[]) => {
+    let calculatedDaysOfWeek = 0
+    for (let i = 0; i < value.length; i++) {
+      calculatedDaysOfWeek += parseInt(value[i])
+    }
+    setSelectedDaysOfWeek(calculatedDaysOfWeek)
+  }
+
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -41,13 +59,13 @@ const ScheduleTestButton = () => {
           <div className="flex flex-col w-full py-5 px-4 gap-6">
             <div className="flex flex-col gap-2">
               <h2 className="text-[14px] font-semibold">Test Suite</h2>
-              <Select>
+              <Select onValueChange={handleSelectTestSuiteNameChange}>
                 <SelectTrigger className="bg-white border-warmGray-200">
                   <SelectValue placeholder="Please select..." />
                 </SelectTrigger>
                 <SelectContent className="bg-white text-warmGray-1100">
-                  <SelectItem value="demo">Demo Suite</SelectItem>
-                  <SelectItem value="auth">Authentication</SelectItem>
+                  <SelectItem value="Demo Suite">Demo Suite</SelectItem>
+                  <SelectItem value="Authentication">Authentication</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -78,6 +96,7 @@ const ScheduleTestButton = () => {
               <ToggleGroup
                 type="multiple"
                 className="flex w-full bg-white rounded-[6px] justify-between gap-0"
+                onValueChange={handleSelectDaysOfWeekChange}
               >
                 <ToggleGroupItem
                   className="flex w-full border-[1px] py-2 px-3 border-warmGray-200 rounded-r-none data-[state=on]:bg-coreBlue data-[state=on]:text-white hover:bg-transparent hover:text-inherit"
