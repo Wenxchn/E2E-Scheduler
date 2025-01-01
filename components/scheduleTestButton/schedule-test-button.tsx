@@ -188,13 +188,15 @@ const ScheduleTestButton = () => {
               <CircleX /> Cancel Schedule
             </Button>
           </DialogClose>
-          <Button
-            className="flex w-full h-[40px] py-2 px-3 gap-2"
-            variant={'coreBlue'}
-            onClick={saveChanges}
-          >
-            Save Changes
-          </Button>
+          <DialogClose asChild>
+            <Button
+              className="flex w-full h-[40px] py-2 px-3 gap-2"
+              variant={'coreBlue'}
+              onClick={saveChanges}
+            >
+              Save Changes
+            </Button>
+          </DialogClose>
         </div>
       </DialogContent>
     </Dialog>
